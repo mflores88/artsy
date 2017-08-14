@@ -12,5 +12,8 @@
   .field
     = f.label :year
     = f.number_field :year
+  .field
+    = f.label :artist_id
+    = f.select :artist_id, options_from_collection_for_select(@artists, 'id', 'name')
   .actions
     = f.submit 'Save'

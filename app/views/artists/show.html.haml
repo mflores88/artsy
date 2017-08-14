@@ -7,6 +7,27 @@
   %b Genre:
   = @artist.genre
 
+-if @artist.albums.any?
+  %p Albums
+
+  %table
+    %thead
+      %tr
+        %th Title
+        %th Year
+    %tbody
+      -@artist.albums.each do |album|
+        %tr
+          %td= album.title
+          %td= album.year
+
+-else
+  %p This artist has no albums.
+  =link_to 'Add one here.', new_album_path
+
+%br
+
+
 = link_to 'Edit', edit_artist_path(@artist)
 \|
 = link_to 'Back', artists_path

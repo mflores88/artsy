@@ -7,5 +7,9 @@
     %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
   %body
     %nav
+      =link_to 'Artists', artists_path
+      =link_to 'Albums', albums_path
+      =link_to 'Add an Album', new_album_path
+      =link_to 'Add an Artist', new_artist_path
       =link_to 'Generate Statistics Report', '#'
     = yield

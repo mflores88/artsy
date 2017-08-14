@@ -11,12 +11,13 @@
 
   %tbody
     - @artists.each do |artist|
-      %tr
+      %tr.artist_info
         %td= artist.name
         %td= artist.genre
         %td= link_to 'Show', artist
         %td= link_to 'Edit', edit_artist_path(artist)
         %td= link_to 'Destroy', artist, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 
 %br
 

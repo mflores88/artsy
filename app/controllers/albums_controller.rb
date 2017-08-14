@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :get_artists, only: [:new, :edit]
 
   # GET /albums
   # GET /albums.json
@@ -14,7 +15,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @album = Album.new(artist_id: params[:artist_id])
   end
 
   # GET /albums/1/edit
@@ -67,8 +68,12 @@ class AlbumsController < ApplicationController
       @album = Album.find(params[:id])
     end
 
+    def get_artists
+      @artists = Artist.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :year)
+      params.require(:album).permit(:title, :year, :artist_id)
     end
 end
